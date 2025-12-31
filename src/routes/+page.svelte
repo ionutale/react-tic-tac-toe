@@ -1,21 +1,31 @@
 <script>
 	import Board from '$lib/Board.svelte';
-	import { checkSquares } from '$lib/tf/predictor';
+	import { checkSquares, setModel, getBestMove } from '$lib/tf/predictor';
+	import { trainModel } from '$lib/tf/trainer';
 
 	let history = [{
 		squares: Array(9).fill(null)
 	}];
-	let xIsNext = Math.random() > 0.5;
+	let xIsNext = true; // Human (X) always starts first for simplicity
 	let stepNumber = 0;
 	let playerX = 0;
 	let playerO = 0;
 	let tie = 0;
+
+	let isTraining = false;
+	let trainingStatus = '';
+	let isAiThinking = false;
 
 	$: current = history[stepNumber];
 	$: winner = calculateWinner(current.squares);
 	$: status = winner 
 		? 'Winner: ' + winner 
 		: 'Next player: ' + (xIsNext ? 'X' : 'O');
+
+	// Trigger AI move when it's O's turn and game is not over
+	$: if (!xIsNext && !winner && !isAiThinking) {
+		makeAiMove();
+	}
 
 	function calculateWinner(squares) {
 		const lines = [
@@ -40,6 +50,45 @@
 	function jumpTo(step) {
 		stepNumber = step;
 		xIsNext = (step % 2) ? false : true;
+	}
+
+	async function handleTrain() {
+		isTraining = true;
+		trainingStatus = 'Starting training...';
+		try {
+			const model = await trainModel((epoch, logs) => {
+				trainingStatus = `Epoch ${epoch + 1}: loss = ${logs.loss.toFixed(4)}, acc = ${logs.acc.toFixed(4)}`;
+			});
+			setModel(model);
+			trainingStatus = 'Training complete! New model loaded.';
+		} catch (err) {
+			console.error(err);
+			trainingStatus = 'Training failed.';
+		} finally {
+			isTraining = false;
+		}
+	}
+
+	async function makeAiMove() {
+		isAiThinking = true;
+		// Small delay to make it feel natural
+		await new Promise(r => setTimeout(r, 500));
+
+		const currentSquares = history[stepNumber].squares;
+		const predictionInput = currentSquares.map(sq => {
+			switch (sq) {
+				case 'O': return 0;
+				case 'X': return 1;
+				default: return 3;
+			}
+		});
+
+		const bestMoveIndex = await getBestMove(predictionInput);
+		
+		if (bestMoveIndex !== null) {
+			handleClick(bestMoveIndex);
+		}
+		isAiThinking = false;
 	}
 
 	async function handleClick(i) {
@@ -90,6 +139,16 @@
 		<div>Player O win: {playerO}</div>
 		<div>Player X win: {playerX}</div>
 		<div>Tie: {tie}</div>
+		
+		<div class="training-controls">
+			<button on:click={handleTrain} disabled={isTraining}>
+				{isTraining ? 'Training...' : 'Train New Model'}
+			</button>
+			{#if trainingStatus}
+				<div class="training-status">{trainingStatus}</div>
+			{/if}
+		</div>
+
 		<ol>
 			{#each history as step, move}
 				<li>
@@ -119,5 +178,18 @@
 
 	.game-info {
 		margin-left: 20px;
+	}
+
+	.training-controls {
+		margin: 20px 0;
+		padding: 10px;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+	}
+
+	.training-status {
+		margin-top: 5px;
+		font-size: 0.9em;
+		color: #666;
 	}
 </style>
