@@ -76,7 +76,7 @@
 		history = historySlice.concat([{
 			squares: squares
 		}]);
-		stepNumber = history.length;
+		stepNumber = history.length - 1;
 		xIsNext = !xIsNext;
 	}
 </script>
