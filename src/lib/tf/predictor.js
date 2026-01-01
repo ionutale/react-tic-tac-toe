@@ -17,10 +17,10 @@ export async function checkSquares(squares = [3, 3, 3, 3, 3, 3, 3, 3, 3]) {
       model = await tfl.loadLayersModel(modelUrl);
     }
     console.log(squares)
-    
+
     const result = model.predict(tf.tensor2d([squares]));
     result.print()
-    
+
     const res = result.dataSync()
     return Array.from(res)
   } catch (error) {
@@ -49,21 +49,22 @@ export async function getBestMove(squares) {
 
     const predictions = model.predict(tf.tensor2d(potentialBoards));
     const results = await predictions.data();
-    
-    // Results is a flat array [O_win, X_win, Tie, O_win, X_win, Tie, ...]
+
+    // results is [O_win, X_win, Tie, O_win, X_win, Tie, ...]
     // We want to maximize O_win (index 0, 3, 6...)
-    
+
     let bestMoveIndex = -1;
     let bestScore = -Infinity;
 
     for (let i = 0; i < emptyIndices.length; i++) {
-      const oWinProb = results[i * 3]; // Index 0 of each prediction
+      const oWinProb = results[i * 3];
       if (oWinProb > bestScore) {
         bestScore = oWinProb;
         bestMoveIndex = emptyIndices[i];
       }
     }
 
+    predictions.dispose();
     return bestMoveIndex;
   } catch (error) {
     console.error(error);

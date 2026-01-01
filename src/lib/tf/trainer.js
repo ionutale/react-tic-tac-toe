@@ -72,7 +72,7 @@ function generateData(numSamples) {
             if (available.length === 0) break;
             const move = available[Math.floor(Math.random() * available.length)];
             board[move] = xTurn ? 1 : -1;
-            if (checkWin(board)) break; // Stop if someone won
+            if (checkWin(board)) break;
             xTurn = !xTurn;
         }
 
@@ -81,7 +81,7 @@ function generateData(numSamples) {
         const isXNext = xMoves === oMoves;
 
         const score = minimax(board, 0, isXNext);
-        
+
         let outcome = [0, 0, 0]; // [O win, X win, Tie]
         if (score > 0) outcome = [0, 1, 0];
         else if (score < 0) outcome = [1, 0, 0];
@@ -107,33 +107,33 @@ function generateData(numSamples) {
 export async function trainModel(onEpochEnd) {
     const model = tf.sequential();
     model.add(tf.layers.dense({
-        units: 18,
-        activation: 'sigmoid',
+        units: 64,
+        activation: 'relu',
         inputShape: [9]
     }));
     model.add(tf.layers.dense({
-        units: 9,
-        activation: 'sigmoid'
+        units: 32,
+        activation: 'relu'
     }));
     model.add(tf.layers.dense({
         units: 3,
-        activation: 'sigmoid' // Output: [O win, X win, Tie]
+        activation: 'softmax' // Output probabilities for [O win, X win, Tie]
     }));
 
     model.compile({
-        optimizer: tf.train.adam(0.001),
-        loss: 'meanSquaredError',
+        optimizer: tf.train.adam(0.005),
+        loss: 'categoricalCrossentropy',
         metrics: ['accuracy']
     });
 
-    const { inputs, labels } = generateData(1000); // Reduced samples for faster browser training
+    const { inputs, labels } = generateData(2000);
 
     console.log('Training model...');
     await model.fit(inputs, labels, {
-        epochs: 50, // Reduced epochs
-        batchSize: 32,
+        epochs: 40,
+        batchSize: 64,
         shuffle: true,
-        validationSplit: 0.2,
+        validationSplit: 0.1,
         callbacks: {
             onEpochEnd: (epoch, logs) => {
                 if (onEpochEnd) onEpochEnd(epoch, logs);
