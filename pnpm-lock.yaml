@@ -25,23 +25,23 @@ importers:
         version: 4.22.0(@tensorflow/tfjs-core@4.22.0)
       '@tensorflow/tfjs-node':
         specifier: ^4.22.0
-        version: 4.22.0(seedrandom@3.0.5)
+        version: 4.22.0(seedrandom@3.0.5)(supports-color@7.2.0)
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^7.0.0
-        version: 7.0.0(@sveltejs/kit@2.70.2(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.56.9)(vite@7.3.6(@types/node@25.0.3)))(svelte@5.56.9)(vite@7.3.6(@types/node@25.0.3)))
+        version: 7.0.0(@sveltejs/kit@2.70.2(@sveltejs/vite-plugin-svelte@6.2.1(supports-color@7.2.0)(svelte@5.56.9)(vite@7.3.7(@types/node@25.0.3)))(svelte@5.56.9)(vite@7.3.7(@types/node@25.0.3)))
       '@sveltejs/kit':
         specifier: ^2.70.2
-        version: 2.70.2(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.56.9)(vite@7.3.6(@types/node@25.0.3)))(svelte@5.56.9)(vite@7.3.6(@types/node@25.0.3))
+        version: 2.70.2(@sveltejs/vite-plugin-svelte@6.2.1(supports-color@7.2.0)(svelte@5.56.9)(vite@7.3.7(@types/node@25.0.3)))(svelte@5.56.9)(vite@7.3.7(@types/node@25.0.3))
       '@sveltejs/vite-plugin-svelte':
         specifier: ^6.2.1
-        version: 6.2.1(svelte@5.56.9)(vite@7.3.6(@types/node@25.0.3))
+        version: 6.2.1(supports-color@7.2.0)(svelte@5.56.9)(vite@7.3.7(@types/node@25.0.3))
       svelte:
         specifier: ^5.56.9
         version: 5.56.9
       vite:
-        specifier: ^7.3.6
-        version: 7.3.6(@types/node@25.0.3)
+        specifier: ^7.3.7
+        version: 7.3.7(@types/node@25.0.3)
 
 packages:
 
@@ -999,8 +999,8 @@ packages:
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
-  vite@7.3.6:
-    resolution: {integrity: sha512-4XP60spRGjSZFf1qYH+dJIkK2znL3zQfl9KkOV9MkkRR/3Dls0dxaBsQPTloEc5BLXWPL9vsOxopxyKoMmDueg==}
+  vite@7.3.7:
+    resolution: {integrity: sha512-AHEzTORMbi7/7aXp7w7KZ5+DCUdSeLsJz0grY8xHpc9DHdYb0vQu6DqJfm2tOw3gDExNgPgnJTXxM6syYFHaCA==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -1180,10 +1180,10 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@mapbox/node-pre-gyp@1.0.9':
+  '@mapbox/node-pre-gyp@1.0.9(supports-color@7.2.0)':
     dependencies:
       detect-libc: 2.1.2
-      https-proxy-agent: 5.0.1
+      https-proxy-agent: 5.0.1(supports-color@7.2.0)
       make-dir: 3.1.0
       node-fetch: 2.7.0
       nopt: 5.0.0
@@ -1285,15 +1285,15 @@ snapshots:
     dependencies:
       acorn: 8.18.0
 
-  '@sveltejs/adapter-auto@7.0.0(@sveltejs/kit@2.70.2(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.56.9)(vite@7.3.6(@types/node@25.0.3)))(svelte@5.56.9)(vite@7.3.6(@types/node@25.0.3)))':
+  '@sveltejs/adapter-auto@7.0.0(@sveltejs/kit@2.70.2(@sveltejs/vite-plugin-svelte@6.2.1(supports-color@7.2.0)(svelte@5.56.9)(vite@7.3.7(@types/node@25.0.3)))(svelte@5.56.9)(vite@7.3.7(@types/node@25.0.3)))':
     dependencies:
-      '@sveltejs/kit': 2.70.2(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.56.9)(vite@7.3.6(@types/node@25.0.3)))(svelte@5.56.9)(vite@7.3.6(@types/node@25.0.3))
+      '@sveltejs/kit': 2.70.2(@sveltejs/vite-plugin-svelte@6.2.1(supports-color@7.2.0)(svelte@5.56.9)(vite@7.3.7(@types/node@25.0.3)))(svelte@5.56.9)(vite@7.3.7(@types/node@25.0.3))
 
-  '@sveltejs/kit@2.70.2(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.56.9)(vite@7.3.6(@types/node@25.0.3)))(svelte@5.56.9)(vite@7.3.6(@types/node@25.0.3))':
+  '@sveltejs/kit@2.70.2(@sveltejs/vite-plugin-svelte@6.2.1(supports-color@7.2.0)(svelte@5.56.9)(vite@7.3.7(@types/node@25.0.3)))(svelte@5.56.9)(vite@7.3.7(@types/node@25.0.3))':
     dependencies:
       '@standard-schema/spec': 1.1.0
       '@sveltejs/acorn-typescript': 1.0.13(acorn@8.18.0)
-      '@sveltejs/vite-plugin-svelte': 6.2.1(svelte@5.56.9)(vite@7.3.6(@types/node@25.0.3))
+      '@sveltejs/vite-plugin-svelte': 6.2.1(supports-color@7.2.0)(svelte@5.56.9)(vite@7.3.7(@types/node@25.0.3))
       '@types/cookie': 0.6.0
       acorn: 8.18.0
       cookie: 0.6.0
@@ -1305,26 +1305,26 @@ snapshots:
       set-cookie-parser: 3.1.2
       sirv: 3.0.2
       svelte: 5.56.9
-      vite: 7.3.6(@types/node@25.0.3)
+      vite: 7.3.7(@types/node@25.0.3)
 
-  '@sveltejs/vite-plugin-svelte-inspector@5.0.1(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.56.9)(vite@7.3.6(@types/node@25.0.3)))(svelte@5.56.9)(vite@7.3.6(@types/node@25.0.3))':
+  '@sveltejs/vite-plugin-svelte-inspector@5.0.1(@sveltejs/vite-plugin-svelte@6.2.1(supports-color@7.2.0)(svelte@5.56.9)(vite@7.3.7(@types/node@25.0.3)))(supports-color@7.2.0)(svelte@5.56.9)(vite@7.3.7(@types/node@25.0.3))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 6.2.1(svelte@5.56.9)(vite@7.3.6(@types/node@25.0.3))
-      debug: 4.4.3
+      '@sveltejs/vite-plugin-svelte': 6.2.1(supports-color@7.2.0)(svelte@5.56.9)(vite@7.3.7(@types/node@25.0.3))
+      debug: 4.4.3(supports-color@7.2.0)
       svelte: 5.56.9
-      vite: 7.3.6(@types/node@25.0.3)
+      vite: 7.3.7(@types/node@25.0.3)
     transitivePeerDependencies:
       - supports-color
 
-  '@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.56.9)(vite@7.3.6(@types/node@25.0.3))':
+  '@sveltejs/vite-plugin-svelte@6.2.1(supports-color@7.2.0)(svelte@5.56.9)(vite@7.3.7(@types/node@25.0.3))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte-inspector': 5.0.1(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.56.9)(vite@7.3.6(@types/node@25.0.3)))(svelte@5.56.9)(vite@7.3.6(@types/node@25.0.3))
-      debug: 4.4.3
+      '@sveltejs/vite-plugin-svelte-inspector': 5.0.1(@sveltejs/vite-plugin-svelte@6.2.1(supports-color@7.2.0)(svelte@5.56.9)(vite@7.3.7(@types/node@25.0.3)))(supports-color@7.2.0)(svelte@5.56.9)(vite@7.3.7(@types/node@25.0.3))
+      debug: 4.4.3(supports-color@7.2.0)
       deepmerge: 4.3.1
       magic-string: 0.30.21
       svelte: 5.56.9
-      vite: 7.3.6(@types/node@25.0.3)
-      vitefu: 1.1.1(vite@7.3.6(@types/node@25.0.3))
+      vite: 7.3.7(@types/node@25.0.3)
+      vitefu: 1.1.1(vite@7.3.7(@types/node@25.0.3))
     transitivePeerDependencies:
       - supports-color
 
@@ -1378,13 +1378,13 @@ snapshots:
     dependencies:
       '@tensorflow/tfjs-core': 4.22.0
 
-  '@tensorflow/tfjs-node@4.22.0(seedrandom@3.0.5)':
+  '@tensorflow/tfjs-node@4.22.0(seedrandom@3.0.5)(supports-color@7.2.0)':
     dependencies:
-      '@mapbox/node-pre-gyp': 1.0.9
+      '@mapbox/node-pre-gyp': 1.0.9(supports-color@7.2.0)
       '@tensorflow/tfjs': 4.22.0(seedrandom@3.0.5)
       adm-zip: 0.5.18
       google-protobuf: 3.21.4
-      https-proxy-agent: 2.2.4
+      https-proxy-agent: 2.2.4(supports-color@7.2.0)
       progress: 2.0.3
       rimraf: 2.7.1
       tar: 6.2.1
@@ -1451,9 +1451,9 @@ snapshots:
     dependencies:
       es6-promisify: 5.0.0
 
-  agent-base@6.0.2:
+  agent-base@6.0.2(supports-color@7.2.0):
     dependencies:
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -1527,13 +1527,17 @@ snapshots:
 
   core-js@3.29.1: {}
 
-  debug@3.2.7:
+  debug@3.2.7(supports-color@7.2.0):
     dependencies:
       ms: 2.1.3
+    optionalDependencies:
+      supports-color: 7.2.0
 
-  debug@4.4.3:
+  debug@4.4.3(supports-color@7.2.0):
     dependencies:
       ms: 2.1.3
+    optionalDependencies:
+      supports-color: 7.2.0
 
   deepmerge@4.3.1: {}
 
@@ -1693,17 +1697,17 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  https-proxy-agent@2.2.4:
+  https-proxy-agent@2.2.4(supports-color@7.2.0):
     dependencies:
       agent-base: 4.3.0
-      debug: 3.2.7
+      debug: 3.2.7(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
 
-  https-proxy-agent@5.0.1:
+  https-proxy-agent@5.0.1(supports-color@7.2.0):
     dependencies:
-      agent-base: 6.0.2
-      debug: 4.4.3
+      agent-base: 6.0.2(supports-color@7.2.0)
+      debug: 4.4.3(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -1939,7 +1943,7 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
-  vite@7.3.6(@types/node@25.0.3):
+  vite@7.3.7(@types/node@25.0.3):
     dependencies:
       esbuild: 0.27.2
       fdir: 6.5.0(picomatch@4.0.5)
@@ -1951,9 +1955,9 @@ snapshots:
       '@types/node': 25.0.3
       fsevents: 2.3.3
 
-  vitefu@1.1.1(vite@7.3.6(@types/node@25.0.3)):
+  vitefu@1.1.1(vite@7.3.7(@types/node@25.0.3)):
     optionalDependencies:
-      vite: 7.3.6(@types/node@25.0.3)
+      vite: 7.3.7(@types/node@25.0.3)
 
   webidl-conversions@3.0.1: {}
 
